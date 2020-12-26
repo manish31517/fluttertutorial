@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
 }*/
 
 //________________________________Static List View__________________________________
-
+/*
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -97,38 +97,6 @@ class ListViewExample extends StatelessWidget {
           onTap: ()
           {
             print('car');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
           },
         ),
         ListTile(
@@ -161,3 +129,58 @@ class ListViewExample extends StatelessWidget {
   }
 }
 
+*/
+
+// ________________________________Dynamic List View___________________________________________
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Dynamic List View"),
+        ),
+        body: MyDynamicListView(),
+      ),
+    );
+  }
+}
+
+class MyDynamicListView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final counteries= ['Algeria','Afganistan','Albenia','Andorra',
+      'Armenia','Austria','Azerbaijan','Bhutan','Bangladesh','Belarus',
+      'Belgium','Bosnia and Herzegovina','Bulgaria','Brazil','Burkina Faso',
+      'Burnudi','China','Croatia','Cyprus','Czech Republic','Denmark',
+      'Estonia','Finland', 'France', 'Georgia','Germany','Greece','Hungary',
+      'India','Iceland','Ireland','Italy','Kazakhstan','Kosovo','Latvia','Liechtenstein',
+      'Lithuania','Luxembourg','Macedonia','Malta','Maldova','Monaco','Montenergo','Netherlands','Norway','Pakistan','Poland',
+      'Portugal','Romania','Russia','San Marino','Serbia','Slovakia','Slovenia','Spain','Sweden',
+      'Switzerland','Turkey','Ukraine','United Kingdom','USA','Zimbbabwe'
+    ];
+    return ListView.separated(
+        itemBuilder:(context,index){
+      return ListTile(
+        title: new Text(counteries[index]),
+        onTap: (){
+          print(counteries[index]);
+        },
+      );},
+        separatorBuilder: (context,index){
+          return Divider();
+        },
+        itemCount: counteries.length
+    );
+    /*
+    return ListView.builder(
+        itemCount: counteries.length,
+        itemBuilder: (context,index){
+          return ListTile(
+            title: new Text(counteries[index]),
+          );
+        },
+
+    );*/
+  }
+}
